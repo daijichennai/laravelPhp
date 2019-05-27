@@ -25,34 +25,30 @@
             <div class="box-header with-border">
               <h3 class="box-title">List of Users</h3>
               <div class="box-tools">
-                <a class="btn btn-primary btn-sm" href="addEditUser.aspx?cmode=add" role="button">Add New User</a>
+                <a class="btn btn-primary btn-sm" href="{{ url('addEditUser/add' )}}" role="button">Add New User</a>
               </div>
             </div>
             <div class="box-body">
                         <table class="table table-hover table-bordered">
                         <tr class="info">
                             <th class="text-center">#</th>
-                            <th class="text-center" style="width:70%">Name</th>
+                            <th class="text-center" style="width:50%">Name</th>
                             <th class="text-center">Email</th>
                             <th class="text-center">Mobile No</th>
-                            <th class="text-center">Active</th>
-                            <th class="text-center" style="width:10%">Action</th>
+                            <th class="text-center">Action</th>
                         </tr>
                    
-                        <tr>
-                            <td>1</td>
-                            <td>Suresh</td>
-                            <td>Suresh@gmail.com</td>
-                            <td>8438433851</td>
-                            <td class="text-center">
-                                <b>YES</b></td>
-                            <td class="text-right">
-
-                            <a class="paddingRight-15" title="User Permission" href="#" role="button"><i class="fa fa-user"></i></a> 
-                            <a class="paddingRight-15" title="Edit" href="#" role="button"><i class="fa fa-pencil" aria-hidden="true"></i></a> 
-                           
-                      </td>
-                      </tr>
+                        @foreach ($users as $user)
+<tr>
+<td class="text-center">{{ $user->userID }}</td>
+<td>{{ $user->userName }}</td>
+<td>{{ $user->userEmail }}</td>
+<td class="text-center">{{ $user->userMobileNo }}</td> 
+<td class="text-center">
+  <a title="Edit User" href="{{ url('addEditUser/edit/'.$user->userID )}}" ><i class="fa fa-edit "></i></a> 
+</td> 
+</tr>
+@endforeach
                      
                         </table>
                  

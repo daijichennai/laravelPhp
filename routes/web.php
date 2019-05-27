@@ -13,16 +13,28 @@ Route::get('/', function () {
     return view('login');
 });
 
-Route::get('/user', function () {
-    return view('userMaster.listUser');
-});
+// Route::get('/user', function () {
+//     return view('userMaster.listUser');
+// });
+
+Route::get('/user','UsersController@index'); 
+
 
 // Route::get('/user/{userID}', function () {
 //     return view('userMaster.listUser');
 // });
 
+Route::get('/addEditUser/{cmode}', function () {
+    //return view('userMaster.dashboard');
+    return View::make('userMaster.addEditUser');
+});
+
+Route::get('/addEditUser/{cmode}/userID', function () {
+    //return view('userMaster.dashboard');
+    return View::make('userMaster.addEditUser');
+});
+
 Route::get('/dashboard', function () {
     //return view('userMaster.dashboard');
     return View::make('userMaster.dashboard');
-
 });
